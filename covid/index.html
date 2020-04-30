@@ -28,6 +28,11 @@
 			.warning{
 				display: none;
 			}
+			.btn_suc
+			{
+			    width: auto;
+				padding: 10px 20px;
+			}
 		</style>
 	</head>
 	<body>
@@ -50,8 +55,10 @@
 						<img src="assets/images/logo.png" class="logo">
 
 						<h2 class="fs-title text-center str_first">Start The Test</h2>
-						<h2 class="fs-title text-center">The purpose of the Coronavirus Self-Checker is to help you make decisions about seeking appropriate medical care. This system is not intended for the diagnosis or treatment of disease or other conditions, including COVID-19. This system is intended only for people who are currently located in the United States.</h2>
-						<h2 class="fs-title text-center">This system is intended only for people who are currently located in the united states and It does not imply an endorsement of any one particular service, product, or enterprises.</h2><br>
+						<h2 class="fs-title text-center">This self-assessment is not meant to be used as a replacement for a consultation.</h2>
+						<h2 class="fs-title text-center">If you are a healthcare professional who has been near or in contact with 2019-nCoV patients, get yourself tested as soon as possible.</h2>
+						<h2 class="fs-title text-center">For all others, please start your self-assessment by clicking on the {CTA} button.</h2>
+						<br>
 						<button class="btn btn-md tc" onclick="tc_check(1)">Agree</button><br><br>
 						<!-- <button class="btn btn-md col-md-12 tc" onclick="tc_check(0)">Not Agree</button> -->
 					</li>
@@ -144,12 +151,77 @@
 					$('.warning').css('display', 'none');
 					$('#conversation').empty();
 					// $('#conversation').append('<li class="col-md-12 user"><p>Age '+age+'</p></li>');
-					$('#conversation').append('<li class="assistant col-md-12 ass_pad"><img src="assets/images/logo.png" class="logo"><p class="warning">Please select valid input</p><p><b>Do you have any of the following symptoms?</b><br><br><small class="txt_frm">Please select symptoms that are not related to any chronic desease you may be subject to.</small></p><br><div class="row text-left"><div class="col-sm-25"><div class="checkbox"><label><input type="checkbox" class="symptoms1" name="symptoms1[]" onclick="symptoms10()" id="symptoms10" value="1">Fever</label></div></div><div class="col-sm-25"><div class="checkbox"><label><input type="checkbox" class="symptoms1" name="symptoms1[]" id="symptoms11" onclick="symptoms11()" value="2">Cough</label></div></div><div class="col-sm-25 pad_r"><div class="checkbox"><label><input type="checkbox" class="symptoms1" name="symptoms1[]" id="symptoms12" onclick="symptoms12()" value="3">Shortness of breath</label></div></div><div class="col-sm-25 pad_0"><div class="checkbox"><label><input type="checkbox" class="symptoms1" name="symptoms1[]" id="symptoms13" onclick="symptoms13()" value="4">None of Above</label></div></div></div><div class="text-center"><br><br><button class="btn btn-md submit1 symptoms1" onclick="symptoms1()">Next</button></div></li>');
+					$('#conversation').append('<li class="assistant col-md-12 ass_pad"><img src="assets/images/logo.png" class="logo"><p><b>Do you have a fever?</b><br><br><small class="txt_frm">If yes, is it greater than 100.4 F in the last 24 hours?</small></p><br><div class="row"><div class="col-xs-6 text-right"><button class="btn btn-md symptoms123_worsening_rapidaly" onclick="symtoms_sec1(1)">Yes</button></div><div class="col-xs-6 text-left"><button class="btn btn-md symptoms123_worsening_rapidaly" onclick="symtoms_sec1(0)">No</button></div></div></li>');
 					$('.sel_age').attr('disabled', true);
 				}
 				else{
 					$('.warning').css('display', 'block');
 				}
+			}
+
+			var seccon1=0;
+			function symtoms_sec1(num1){
+				$('#conversation').empty();
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><div class="row"><p><b>Do you live with someone who has tested positive for COVID-19?</b></p><br><div class="row"><div class="col-xs-6 text-right"><button class="btn btn-md symptoms123_worsening_rapidaly" onclick="symtoms_sec2(1)">Yes</button></div><div class="col-xs-6 text-left"><button class="btn btn-md symptoms123_worsening_rapidaly" onclick="symtoms_sec2(0)">No</button></div></div></div></li>');
+
+				seccon1=num1;
+			}
+
+			var seccon2=0;
+
+			function symtoms_sec2(num2){
+				$('#conversation').empty();
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><div class="row"><p><b>Do you have a persistent cough and shortness of breath?</b></p><br><div class="row"><div class="col-xs-6 text-right"><button class="btn btn-md symptoms123_worsening_rapidaly" onclick="symtoms_sec3(1)">Yes</button></div><div class="col-xs-6 text-left"><button class="btn btn-md symptoms123_worsening_rapidaly" onclick="symtoms_sec3(0)">No</button></div></div></div></li>');
+				seccon2=num2;
+			}
+
+			var seccon3=0;
+
+			function symtoms_sec3(num3){
+				$('#conversation').empty();
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><div class="row"><p><b>Do you have any of the following diseases :</b></p><br>		<p class="text-left" style="padding-left: 45px;">- Asthma/COPD or other lung diseases<br>- Heart disease including stents and bypass<br>- Diabetes<br>- Diseases associated with immune suppression</p><div class="row"><div class="col-xs-6 text-right">			<button class="btn btn-md symptoms123_worsening_rapidaly" onclick="count_sec(1)">Yes</button></div><div class="col-xs-6 text-left"><button class="btn btn-md symptoms123_worsening_rapidaly" onclick="count_sec(0)">No</button></div></div></div></li>');				
+				seccon3= num3;
+			}
+
+			function count_sec(num4)
+			{
+				$('#conversation').empty();
+
+				if(seccon1==0 && seccon2==1 && seccon3==1 && num4==1){
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may have COVID-19. It’s important to get tested immediately.</p><p>Check-in online at the nearest Specialty Care clinic to see a healthcare provider.</p><div class="text-center"><br><button class="btn btn-md tc btn_suc" onclick="">Book a Telehealth Consultation for COVID-19</button></div><br><p>Call 911 or your local emergency number for an ambulance if your condition is worsening rapidly.</p></li>');
+			}
+			else if(seccon1==1 && seccon2==1 && seccon3==1 && num4==1){
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may have COVID-19. It’s important to get tested immediately.</p><p>Check-in online at the nearest Specialty Care clinic to see a healthcare provider.</p><div class="text-center"><br><button class="btn btn-md tc btn_suc" onclick="">Book a Telehealth Consultation for COVID-19</button></div><br><p>Call 911 or your local emergency number for an ambulance if your condition is worsening rapidly.</p></li>');
+			}
+			else if(seccon1==0 && seccon2==1 && seccon3==0 && num4==1){
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may be at risk of having COVID-19. </p><p>You are safe at the moment but due to your weak immune system, you are advised to take precautions.</p><p>Practice social distancing and wash your hands for 20 seconds using soap and water.</p><p>Call 911 or your local emergency number for an ambulance if you or anyone you know experiences fever, shortness of breath and persistent cough in the future.</p></li>');
+			}
+			else if(seccon1==0 && seccon2==0 && seccon3==0 && num4==0){
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad2" id="follow_preventive_measures"><img src="assets/images/logo.png" class="logo"><div class="alert alert-success"><strong>Follow preventive measures.</strong></div><div class="alert alert-success"><strong><p style="text-align: left;color:#3c763d;font-size:12px;">Because there is currently no vaccine to prevent infection, the best way to protect yourself is to avoid being exposed to this virus. The CDC recommends the following additional steps:</p><br><p style="text-align: left;color:#3c763d;font-size:12px;">1. Wash your hands often with soap and water for at least 20 seconds, especially after blowing your nose, coughing, or sneezing; going to the bathroom; and before eating or preparing food.<br><br>2. Use an alcohol-based hand sanitizer that contains at least 60 percent alcohol if soap and water are not available.<br><br>3. Avoid touching your eyes, nose and mouth with unwashed hands.<br><br>4. Avoid close contact with people who are sick.<br><br>5. Stay home when you are sick.<br><br>6. Cover your cough or sneeze with a tissue, then throw the tissue in the trash.<br><br>7. Clean and disinfect frequently touched objects and surfaces.<br></p></strong></div></li>');
+			}
+			else if(seccon1==1 && seccon2==0 && seccon3==0 && num4==1){
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad2" id="follow_preventive_measures"><img src="assets/images/logo.png" class="logo"><div class="alert alert-success"><strong>Follow preventive measures.</strong></div><div class="alert alert-success"><strong><p style="text-align: left;color:#3c763d;font-size:12px;">Because there is currently no vaccine to prevent infection, the best way to protect yourself is to avoid being exposed to this virus. The CDC recommends the following additional steps:</p><br><p style="text-align: left;color:#3c763d;font-size:12px;">1. Wash your hands often with soap and water for at least 20 seconds, especially after blowing your nose, coughing, or sneezing; going to the bathroom; and before eating or preparing food.<br><br>2. Use an alcohol-based hand sanitizer that contains at least 60 percent alcohol if soap and water are not available.<br><br>3. Avoid touching your eyes, nose and mouth with unwashed hands.<br><br>4. Avoid close contact with people who are sick.<br><br>5. Stay home when you are sick.<br><br>6. Cover your cough or sneeze with a tissue, then throw the tissue in the trash.<br><br>7. Clean and disinfect frequently touched objects and surfaces.<br></p></strong></div></li>');
+			}
+			else if(seccon1==1 && seccon2==0 && seccon3==0 && num4==0){
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad2" id="follow_preventive_measures"><img src="assets/images/logo.png" class="logo"><div class="alert alert-success"><strong>Follow preventive measures.</strong></div><div class="alert alert-success"><strong><p style="text-align: left;color:#3c763d;font-size:12px;">Because there is currently no vaccine to prevent infection, the best way to protect yourself is to avoid being exposed to this virus. The CDC recommends the following additional steps:</p><br><p style="text-align: left;color:#3c763d;font-size:12px;">1. Wash your hands often with soap and water for at least 20 seconds, especially after blowing your nose, coughing, or sneezing; going to the bathroom; and before eating or preparing food.<br><br>2. Use an alcohol-based hand sanitizer that contains at least 60 percent alcohol if soap and water are not available.<br><br>3. Avoid touching your eyes, nose and mouth with unwashed hands.<br><br>4. Avoid close contact with people who are sick.<br><br>5. Stay home when you are sick.<br><br>6. Cover your cough or sneeze with a tissue, then throw the tissue in the trash.<br><br>7. Clean and disinfect frequently touched objects and surfaces.<br></p></strong></div></li>');
+			}
+			else if(seccon1==1 && seccon2==1 && seccon3==0 && num4==0){
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may be at risk of having COVID-19. </p><p>You are safe at the moment but due to your weak immune system, you are advised to take precautions.</p><p>Practice social distancing and wash your hands for 20 seconds using soap and water.</p><p>Call 911 or your local emergency number for an ambulance if you or anyone you know experiences fever, shortness of breath and persistent cough in the future.</p></li>');
+			}
+			else
+			{
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad2" id="follow_preventive_measures"><img src="assets/images/logo.png" class="logo"><div class="alert alert-success"><strong>Follow preventive measures.</strong></div><div class="alert alert-success"><strong><p style="text-align: left;color:#3c763d;font-size:12px;">Because there is currently no vaccine to prevent infection, the best way to protect yourself is to avoid being exposed to this virus. The CDC recommends the following additional steps:</p><br><p style="text-align: left;color:#3c763d;font-size:12px;">1. Wash your hands often with soap and water for at least 20 seconds, especially after blowing your nose, coughing, or sneezing; going to the bathroom; and before eating or preparing food.<br><br>2. Use an alcohol-based hand sanitizer that contains at least 60 percent alcohol if soap and water are not available.<br><br>3. Avoid touching your eyes, nose and mouth with unwashed hands.<br><br>4. Avoid close contact with people who are sick.<br><br>5. Stay home when you are sick.<br><br>6. Cover your cough or sneeze with a tissue, then throw the tissue in the trash.<br><br>7. Clean and disinfect frequently touched objects and surfaces.<br></p></strong></div></li>');
+			}		
 			}
 			
 			function symptoms10()
