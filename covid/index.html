@@ -57,7 +57,7 @@
 						<h2 class="fs-title text-center str_first">Start The Test</h2>
 						<h2 class="fs-title text-center">This self-assessment is not meant to be used as a replacement for a consultation.</h2>
 						<h2 class="fs-title text-center">If you are a healthcare professional who has been near or in contact with 2019-nCoV patients, get yourself tested as soon as possible.</h2>
-						<h2 class="fs-title text-center">For all others, please start your self-assessment by clicking on the {CTA} button.</h2>
+						<h2 class="fs-title text-center">For all others, please start your self-assessment by clicking on the Agree button.</h2>
 						<br>
 						<button class="btn btn-md tc" onclick="tc_check(1)">Agree</button><br><br>
 						<!-- <button class="btn btn-md col-md-12 tc" onclick="tc_check(0)">Not Agree</button> -->
@@ -192,11 +192,11 @@
 
 				if(seccon1==0 && seccon2==1 && seccon3==1 && num4==1){
 
-				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may have COVID-19. It’s important to get tested immediately.</p><p>Check-in online at the nearest Specialty Care clinic to see a healthcare provider.</p><div class="text-center"><br><button class="btn btn-md tc btn_suc" onclick="">Book a Telehealth Consultation for COVID-19</button></div><br><p>Call 911 or your local emergency number for an ambulance if your condition is worsening rapidly.</p></li>');
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may have COVID-19. It’s important to get tested immediately.</p><p>Check-in online at the nearest Specialty Care clinic to see a healthcare provider.</p><div class="text-center"><br><a class="btn btn-md tc btn_suc" href="https://specialtycareclinics.com/telefrm.php">Book a Telehealth Consultation for COVID-19</a></div><br><p>Call 911 or your local emergency number for an ambulance if your condition is worsening rapidly.</p></li>');
 			}
 			else if(seccon1==1 && seccon2==1 && seccon3==1 && num4==1){
 
-				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may have COVID-19. It’s important to get tested immediately.</p><p>Check-in online at the nearest Specialty Care clinic to see a healthcare provider.</p><div class="text-center"><br><button class="btn btn-md tc btn_suc" onclick="">Book a Telehealth Consultation for COVID-19</button></div><br><p>Call 911 or your local emergency number for an ambulance if your condition is worsening rapidly.</p></li>');
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may have COVID-19. It’s important to get tested immediately.</p><p>Check-in online at the nearest Specialty Care clinic to see a healthcare provider.</p><div class="text-center"><br><a class="btn btn-md tc btn_suc" href="https://specialtycareclinics.com/telefrm.php">Book a Telehealth Consultation for COVID-19</a></div><br><p>Call 911 or your local emergency number for an ambulance if your condition is worsening rapidly.</p></li>');
 			}
 			else if(seccon1==0 && seccon2==1 && seccon3==0 && num4==1){
 
@@ -215,6 +215,10 @@
 				$('#conversation').append('<li class="assistant col-md-12 ass_pad2" id="follow_preventive_measures"><img src="assets/images/logo.png" class="logo"><div class="alert alert-success"><strong>Follow preventive measures.</strong></div><div class="alert alert-success"><strong><p style="text-align: left;color:#3c763d;font-size:12px;">Because there is currently no vaccine to prevent infection, the best way to protect yourself is to avoid being exposed to this virus. The CDC recommends the following additional steps:</p><br><p style="text-align: left;color:#3c763d;font-size:12px;">1. Wash your hands often with soap and water for at least 20 seconds, especially after blowing your nose, coughing, or sneezing; going to the bathroom; and before eating or preparing food.<br><br>2. Use an alcohol-based hand sanitizer that contains at least 60 percent alcohol if soap and water are not available.<br><br>3. Avoid touching your eyes, nose and mouth with unwashed hands.<br><br>4. Avoid close contact with people who are sick.<br><br>5. Stay home when you are sick.<br><br>6. Cover your cough or sneeze with a tissue, then throw the tissue in the trash.<br><br>7. Clean and disinfect frequently touched objects and surfaces.<br></p></strong></div></li>');
 			}
 			else if(seccon1==1 && seccon2==1 && seccon3==0 && num4==0){
+
+				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may be at risk of having COVID-19. </p><p>You are safe at the moment but due to your weak immune system, you are advised to take precautions.</p><p>Practice social distancing and wash your hands for 20 seconds using soap and water.</p><p>Call 911 or your local emergency number for an ambulance if you or anyone you know experiences fever, shortness of breath and persistent cough in the future.</p></li>');
+			}
+			else if(seccon1==1 && seccon2==1 && seccon3==0 && num4==1){
 
 				$('#conversation').append('<li class="assistant col-md-12 ass_pad box-center"><img src="assets/images/logo.png" class="logo"><p>Based on what you have described, you may be at risk of having COVID-19. </p><p>You are safe at the moment but due to your weak immune system, you are advised to take precautions.</p><p>Practice social distancing and wash your hands for 20 seconds using soap and water.</p><p>Call 911 or your local emergency number for an ambulance if you or anyone you know experiences fever, shortness of breath and persistent cough in the future.</p></li>');
 			}
