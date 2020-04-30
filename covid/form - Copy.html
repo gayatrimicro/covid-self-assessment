@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>COVID - 19</title>
+		<meta charset="utf-8">
+ 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+	</head>
+	<body>
+		
+		<!-- multistep form -->
+<form id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Start</li>
+    <li>Select Gender</li>
+    <li>Select Age</li>
+    <li>Select Symptoms</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Start The Test</h2>
+    <!-- <h3 class="fs-subtitle">This is step 1</h3> -->
+    <h2 class="fs-title">The purpose of the Coronavirus Self-Checker is to help you make decisions about seeking appropriate medical care. This system is not intended for the diagnosis or treatment of disease or other conditions, including COVID-19. This system is intended only for people who are currently located in the United States.</h2><br>
+	<h2 class="fs-title">This project was made possible through a partnership with the CDC Foundation and is enabled by Microsoft's Azure platform. CDC's collaboration with a non-federal organization does not imply an endorsement of any one particular service, product, or enterprise.</h2>
+	
+    <input type="button" name="next" class="next action-button" value="I agree" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Select Your Gender</h2>
+    <!-- <h3 class="fs-subtitle">Your presence on the social network</h3> -->
+     <div class="row radio"> 
+      <div class="col-4">
+      	<input type="radio" id="male" name="gender" value="male">
+	  	<label for="male">Male</label>
+	  </div>
+	  <div class="col-4">
+	  	<input type="radio" id="female" name="gender" value="female">
+	  	<label for="female">Female</label>
+	  </div>
+	  <div class="col-4">
+	  	<input type="radio" id="other" name="gender" value="other">
+		<label for="other">Other</label>
+	  </div>
+	</div>
+	<br>
+	<br>
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Select Your Age</h2>
+    <!-- <h3 class="fs-subtitle">We will never sell it</h3> -->
+    <div class="row">
+    <div class="col-12">
+    	<label for="other">I am </label>
+	  	<select class="1-100"></select> &nbsp;Years
+		</div>
+	  </div>	
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+    
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Do you have any of the following symptoms?</h2>
+    <h3 class="fs-subtitle">Please select symptoms that are not related to any chrinic desease you may be subject to.</h3>
+    <div class="row checkbox"> 
+      <div class="col-4">
+      	<input type="checkbox" id="fever" name="symptoms" value="fever">
+	  	<label for="fever">Fever</label>
+	  </div>
+	  <div class="col-4">
+	  	<input type="checkbox" id="cough" name="symptoms" value="cough">
+	  	<label for="cough">Cough</label>
+	  </div>
+	  <div class="col-4">
+	  	<input type="checkbox" id="shortness-of-breath" name="symptoms" value="shortness-of-breath">
+		<label for="shortness-of-breath">Shortness of breath</label>
+	  </div>
+	</div>
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="submit" name="submit" class="submit action-button" value="Submit" />
+  </fieldset>
+</form>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

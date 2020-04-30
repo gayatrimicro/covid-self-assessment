@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>COVID - 19</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<style type="text/css">
+			li{
+				list-style: none;
+			}
+			.assistant{
+				background: lightgray;
+				padding: 5px;
+				max-width: 70%;
+				float: left;
+				border-radius: 5px;
+				margin-bottom: 20px;
+				text-align: left;
+			}
+
+			.user{
+				background: #5bc0de;
+				max-width: 70%;
+				padding: 5px;
+				float: right;
+				border-radius: 5px;
+				margin-bottom: 20px;
+				/*text-align: right;*/
+			}
+			.user button{
+				background-color: #286090;
+				border-color: #204d74;
+				color: #ffffff;
+			}
+			.user select{
+				background-color: #286090;
+				border-color: #204d74;
+				color: #ffffff;
+			}
+			.alert{
+				margin-bottom: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="hidden" id="12_1" value="">
+		<input type="hidden" id="12_2" value="">
+		<input type="hidden" id="12_3" value="">
+		<input type="hidden" id="123_1" value="">
+		<input type="hidden" id="123_2" value="">
+		<input type="hidden" id="123_3" value="">
+		<div class="container">
+			<div class="row">
+				<h2 class="text-center">COVID - 19 Scanner</h2><hr>
+			</div>
+			<div class="row">
+				<ul id="conversation">
+					<li class="assistant col-md-12">
+						<p>The purpose of the Coronavirus Self-Checker is to help you make decisions about seeking appropriate medical care. This system is not intended for the diagnosis or treatment of disease or other conditions, including COVID-19. This system is intended only for people who are currently located in the United States.</p>
+						<p>This project was made possible through a partnership with the CDC Foundation and is enabled by Microsoft’s Azure platform. CDC’s collaboration with a non-federal organization does not imply an endorsement of any one particular service, product, or enterprise.</p>
+						<button class="btn btn-md col-md-12 tc" onclick="tc_check(1)">Agree</button><br><br>
+						<button class="btn btn-md col-md-12 tc" onclick="tc_check(0)">Not Agree</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			function tc_check(id)
+			{
+				if(id==1)
+				{
+					$(".tc").attr("disabled", true);
+					$('#conversation').append('<li class="col-md-12 user"><p>Agree</p></li>');
+					$('#conversation').append('<li class="col-md-12 assistant"><p><b>Select you gender</b></p><button class="btn btn-md col-md-12 gender" onclick="gender(1)">Male</button><br><br><button class="btn btn-md col-md-12 gender" onclick="gender(2)">Female</button></li>');
+				}
+				else{
+					$(".tc").attr("disabled", true);
+					$('#conversation').append('<li class="col-md-12 user"><p>I dnt Agree</p></li>');
+					$('#conversation').append('<li class="col-md-12 assistant"><p>Your consent is required to use the Coronavirus Self-Checker.</p></li><li class="col-md-12 assistant"><p>The purpose of the Coronavirus Self-Checker is to help you make decisions about seeking appropriate medical care. This system is not intended for the diagnosis or treatment of disease or other conditions, including COVID-19. This system is intended only for people who are currently located in the United States.</p><p>This project was made possible through a partnership with the CDC Foundation and is enabled by Microsoft’s Azure platform. CDC’s collaboration with a non-federal organization does not imply an endorsement of any one particular service, product, or enterprise.</p><button class="btn btn-md col-md-12 tc" onclick="tc_check(1)">Agree</button><br><br><button class="btn btn-md col-md-12 tc" onclick="tc_check(0)">Not Agree</button></li>');
+				}				
+			}
+
+			function gender(gen)
+			{
+				if(gen==1)
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>Male</p></li>');
+				}
+				else{
+					$('#conversation').append('<li class="col-md-12 user"><p>Female</p></li>');
+				}
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Select you age</b></p><select id="sel_age" onchange="age(this.value)" class="btn sel_age col-md-12"><option value="0">Less Than 1 Year</option><option value="1">1 Year</option></select></li>');
+				
+				$('#conversation').append('');
+				for(var i=2; i<=100; i++)
+				{
+					$('#sel_age').append('<option value="'+i+'">'+i+' Years</option>');
+				}
+				$(".gender").attr("disabled", true);
+			}
+
+			function age(age)
+			{
+				$('#conversation').append('<li class="col-md-12 user"><p>Age '+age+'</p></li>');
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Do you have any of the following symptoms?</b><br><small>Please select  symptoms that are not related to any chrinic desease you may be subject to.</small></p><div class="checkbox"><label><input type="checkbox" class="symptoms1" name="symptoms1[]" id="symptoms10" value="1">Fever</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms1" name="symptoms1[]" id="symptoms11" value="2">Cough</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms1" name="symptoms1[]" id="symptoms12" value="3">Shortness of breath</label></div><button class="btn btn-md col-md-12 submit1 symptoms1" onclick="symptoms1()">Submit</button></li>');
+				$('.sel_age').attr('disabled', true);
+			}
+
+			function symptoms1()
+			{
+				if($('#symptoms10').is(":checked"))
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You have Fever</p></li>');
+				}
+				if($('#symptoms11').is(":checked"))
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You have Cought</p></li>');
+				}
+				if($('#symptoms12').is(":checked"))
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You have Shortness of breath</p></li>');
+				}
+
+				if (($('#symptoms10').is(":checked") && $('#symptoms11').is(":checked") && $('#symptoms12').is(":checked")) || ($('#symptoms10').is(":checked") && $('#symptoms12').is(":checked")))
+				{// for all or 1 and 3
+					emergancy();
+				}
+				else if ($('#symptoms10').is(":checked") && (!($('#symptoms11').is(":checked"))) && (!($('#symptoms12').is(":checked"))))
+				{//for option 1
+					$('#conversation').append('<li class="assistant col-md-12"><p><b>How high is your fever?</b></p><button class="btn btn-md col-md-12 symptoms_1_high_fever" onclick="symptoms_1_high_fever(1)">Between 37.5&deg;C and 40&deg;C (99.5&deg;F and 104&deg;F)</button><br><br><button class="btn btn-md col-md-12 symptoms_1_high_fever" onclick="symptoms_1_high_fever(2)">Greater than 40&deg;C (104&deg;F)</button><br><br><button class="btn btn-md col-md-12 symptoms_1_high_fever" onclick="symptoms_1_high_fever(3)">I haven\'t taken my temprature</button></li>');
+				}
+				else if ($('#symptoms10').is(":checked") && $('#symptoms11').is(":checked"))
+				{//for option 1 and 2
+					$('#conversation').append('<li class="assistant col-md-12"><p><b>How high is your fever?</b></p><button class="btn btn-md col-md-12 symptoms_1_high_fever" onclick="symptoms_12_high_fever(1)">Between 37.5&deg;C and 40&deg;C (99.5&deg;F and 104&deg;F)</button><br><br><button class="btn btn-md col-md-12 symptoms_1_high_fever" onclick="symptoms_12_high_fever(2)">Greater than 40&deg;C (104&deg;F)</button><br><br><button class="btn btn-md col-md-12 symptoms_1_high_fever" onclick="symptoms_12_high_fever(3)">I haven\'t taken my temprature</button></li>');
+				}
+				else if(($('#symptoms11').is(":checked") && $('#symptoms12').is(":checked")) || ($('#symptoms11').is(":checked") || $('#symptoms12').is(":checked")))
+				{// for option 2 and 3 or 2 or 3
+					$('#conversation').append('<li class="assistant col-md-12"><p><b>Are your symptoms worsening rapidly?</b></p><button class="btn btn-md col-md-12 symptoms123_worsening_rapidaly" onclick="symptoms123_worsening_rapidaly(1)">Yes</button><br><br><button class="btn btn-md col-md-12 symptoms123_worsening_rapidaly" onclick="symptoms123_worsening_rapidaly(0)">No</button></li>');
+				}
+				else{ // for no option selected
+					multi_symptoms(2);
+				}
+				$('.symptoms1').attr('disabled', true);
+			}
+
+			function symptoms_1_high_fever(id)
+			{
+				if(id==1)
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You have Fever Between 37.5&deg;C and 40&deg;C (99.5&deg;F and 104&deg;F)</p></li>');
+				}
+				else if(id==2)
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You have Fever Greater than 40&deg;C (104&deg;F)</p></li>');
+				}
+				else if(id==3)
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You haven\'t taken you temprature</p></li>');
+				}
+
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Are your symptoms worsening rapidly?</b></p><button class="btn btn-md col-md-12 symptoms123_worsening_rapidaly" onclick="symptoms123_worsening_rapidaly(1)">Yes</button><br><br><button class="btn btn-md col-md-12 symptoms123_worsening_rapidaly" onclick="symptoms123_worsening_rapidaly(0)">No</button></li>');
+				$('.symptoms_1_high_fever').attr('disabled', true);
+			}
+
+			function symptoms123_worsening_rapidaly(id)
+			{
+				if(id == 0)
+				{
+					$('#123_1').val(0);
+					$('#conversation').append('<li class="col-md-12 user"><p>No</p></li>');
+				}
+				else{
+					$('#123_1').val(1);
+					$('#conversation').append('<li class="col-md-12 user"><p>Yes</p></li>');
+				}
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Are you breathing very fast?</b></p><button class="btn btn-md col-md-12 symptoms_123_breathing_very_fast" onclick="symptoms_123_breathing_very_fast(1)">Yes</button><br><br><button class="btn btn-md col-md-12 symptoms_123_breathing_very_fast" onclick="symptoms_123_breathing_very_fast(0)">No</button></li>');
+				$('.symptoms123_worsening_rapidaly').attr('disabled', true);
+			}
+
+			function symptoms_123_breathing_very_fast(id)
+			{
+				if(id == 0)
+				{
+					$('#123_2').val(0);
+					$('#conversation').append('<li class="col-md-12 user"><p>No</p></li>');
+				}
+				else{
+					$('#123_2').val(1);
+					$('#conversation').append('<li class="col-md-12 user"><p>Yes</p></li>');
+				}
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Are you coughing up blood?</b></p><button class="btn btn-md col-md-12 symptoms_123_coughing_up_blood" onclick="symptoms_123_coughing_up_blood(1)">Yes</button><br><br><button class="btn btn-md col-md-12 symptoms_123_coughing_up_blood" onclick="symptoms_123_coughing_up_blood(0)">No</button><br><br><button class="btn btn-md col-md-12 symptoms_123_coughing_up_blood" onclick="symptoms_123_coughing_up_blood(2)">Not Confirmed</button></li>');
+				$('.symptoms_123_breathing_very_fast').attr('disabled', true);
+			}
+
+			function symptoms_123_coughing_up_blood(id)
+			{
+				if(id==1)
+				{
+					$('#123_3').val(1);
+					$('#conversation').append('<li class="col-md-12 user"><p>Yes</p></li>');
+					emergancy();
+				}
+				else if(id==0)
+				{
+					$('#123_3').val(0);
+					$('#conversation').append('<li class="col-md-12 user"><p>No</p></li>');
+					multi_symptoms(0);
+				}
+				else if(id == 2)
+				{
+					$('#123_3').val(0);
+					$('#conversation').append('<li class="col-md-12 user"><p>Not Confirmed</p></li>');
+					multi_symptoms(0);
+				}
+				$('.symptoms_123_coughing_up_blood').attr('disabled', true);
+			}
+
+			function symptoms_12_high_fever(id)
+			{
+				if(id==1)
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You have Fever Between 37.5&deg;C and 40&deg;C (99.5&deg;F and 104&deg;F)</p></li>');
+				}
+				else if(id==2)
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You have Fever Greater than 40&deg;C (104&deg;F)</p></li>');
+				}
+				else if(id==3)
+				{
+					$('#conversation').append('<li class="col-md-12 user"><p>You haven\'t taken you temprature</p></li>');
+				}
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Are your symptoms worsening rapidly?</b></p><button class="btn btn-md col-md-12 symptoms12_worsening_rapidaly" onclick="symptoms12_worsening_rapidaly(1)">Yes</button><br><br><button class="btn btn-md col-md-12 symptoms12_worsening_rapidaly" onclick="symptoms12_worsening_rapidaly(0)">No</button></li>');
+				$('.symptoms_1_high_fever').attr('disabled', true);
+			}
+
+			function symptoms12_worsening_rapidaly(id)
+			{
+				if(id == 0)
+				{
+					$('#12_1').val(0);
+					$('#conversation').append('<li class="col-md-12 user"><p>No</p></li>');
+				}
+				else{
+					$('#12_1').val(1);
+					$('#conversation').append('<li class="col-md-12 user"><p>Yes</p></li>');
+				}
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Are you breathing very fast?</b></p><button class="btn btn-md col-md-12 symptoms_12_breathing_very_fast" onclick="symptoms_12_breathing_very_fast(1)">Yes</button><br><br><button class="btn btn-md col-md-12 symptoms_12_breathing_very_fast" onclick="symptoms_12_breathing_very_fast(0)">No</button></li>');
+				$('.symptoms12_worsening_rapidaly').attr('disabled', true);
+			}
+
+			function symptoms_12_breathing_very_fast(id)
+			{
+				if(id == 0)
+				{
+					$('#12_2').val(0);
+					$('#conversation').append('<li class="col-md-12 user"><p>No</p></li>');
+				}
+				else{
+					$('#12_2').val(1);
+					$('#conversation').append('<li class="col-md-12 user"><p>Yes</p></li>');
+				}
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Are you coughing up blood?</b></p><button class="btn btn-md col-md-12 symptoms_12_coughing_up_blood" onclick="symptoms_12_coughing_up_blood(1)">Yes</button><br><br><button class="btn btn-md col-md-12 symptoms_12_coughing_up_blood" onclick="symptoms_12_coughing_up_blood(0)">No</button><br><br><button class="btn btn-md col-md-12 symptoms_12_coughing_up_blood" onclick="symptoms_12_coughing_up_blood(2)">Not Confirmed</button></li>');
+				$('.symptoms_12_breathing_very_fast').attr('disabled', true);
+			}
+
+			function symptoms_12_coughing_up_blood(id)
+			{
+				if(id==1)
+				{
+					$('#12_3').val(1);
+					$('#conversation').append('<li class="col-md-12 user"><p>Yes</p></li>');
+					emergancy();
+				}
+				else if(id==0)
+				{
+					$('#12_3').val(0);
+					$('#conversation').append('<li class="col-md-12 user"><p>No</p></li>');
+					multi_symptoms(1);
+				}
+				else if(id == 2)
+				{
+					$('#12_3').val(0);
+					$('#conversation').append('<li class="col-md-12 user"><p>Not Confirmed</p></li>');
+					multi_symptoms(1);
+				}
+				$('.symptoms_12_coughing_up_blood').attr('disabled', true);
+			}
+
+			function multi_symptoms(num)
+			{
+				if(num == 0)
+				{//from 123
+					if($('#123_1').val()==1 || $('#123_2').val()==1 || $('#123_3').val()==1)
+					{
+						emergancy();
+					}
+					else
+					{
+						$('#conversation').append('<li class="assistant col-md-12"><p><b>Do you have any of the following symptoms?</b></p><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_0">Fatigue</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_1">Muscle pain</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_2">Chills</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_3">Headache</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_4">Diarrhea</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_5">Nausea</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_6">Sorevthroat</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_7">None of Above</label></div><button class="btn btn-md col-md-12 symptoms123_none_confirmed" onclick="symptoms_123_none_confirmed_submit(0)">Submit</button></li>');
+					}
+				}
+				else if(num == 1)
+				{ // from 12
+					if($('#12_1').val()==1 || $('#12_2').val()==1 || $('#12_3').val()==1)
+					{
+						emergancy();
+					}
+					else
+					{
+						$('#conversation').append('<li class="assistant col-md-12"><p><b>Do you have any of the following symptoms?</b></p><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_0">Fatigue</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_1">Muscle pain</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_2">Chills</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_3">Headache</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_4">Diarrhea</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_5">Nausea</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_6">Sorevthroat</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_7">None of Above</label></div><button class="btn btn-md col-md-12 symptoms123_none_confirmed" onclick="symptoms_12_transmission_submit()">Submit</button></li>');
+					}
+				}
+				else{ //num==2
+					$('#conversation').append('<li class="assistant col-md-12"><p><b>Do you have any of the following symptoms?</b></p><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_0">Fatigue</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_1">Muscle pain</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_2">Chills</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_3">Headache</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_4">Diarrhea</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_5">Nausea</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_6">Sorevthroat</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_none_confirmed" id="symptoms123_none_confirmed_7">None of Above</label></div><button class="btn btn-md col-md-12 symptoms123_none_confirmed" onclick="covid(1)">Submit</button></li>');
+				}				
+			}
+
+			function symptoms_123_none_confirmed_submit(num)
+			{
+				$('.symptoms123_none_confirmed').attr('disabled', true);
+				covid(num);
+			}
+
+			function symptoms_12_transmission_submit()
+			{
+				$('.symptoms123_none_confirmed').attr('disabled', true);
+				$('#conversation').append('<li class="assistant col-md-12"><p><b>Have you traveled to or resided in the country of local, widespread transmission of coronavirus?</b></p><button class="btn btn-md col-md-12 symptoms_12_transmission_submit" onclick="transmission(1)">Yes</button><br><br><button class="btn btn-md col-md-12 symptoms_12_transmission_submit" onclick="transmission(0)">No</button></li>');
+			}
+
+			function transmission(num)
+			{
+				if(num==0)
+				{
+					$('.symptoms123_none_confirmed').attr('disabled', true);
+					$('.symptoms_12_transmission_submit').attr('disabled', true);
+					covid(0);
+				}
+				else{
+					consult_healthcare();
+				}
+			}
+
+			function covid(num)
+			{
+				if(num == 0)
+				{
+					$('#conversation').append('<li class="assistant col-md-12"><p><b>Have you had close contact with a person with suspected COVID-19 infection in the last 14 days?</b><br><small>By "suspected" we mean a person with a confirmed COVID-19 infection, or tested for COVID-19.</small></p><div class="checkbox"><label><input type="checkbox" class="symptoms123_covid19" id="symptoms123_covid19_1" value="1">I live or have provided care toa person suspected of having COVID-19</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_covid19" id="symptoms123_covid19_2" value="2">I have shared the same closed environment (e.g., classroom, workspace, gym) or traveled in close proximity (1 m) with a person suspected of having COVID-19</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_covid19" id="symptoms123_covid19_3" value="3">Other / None of the above</label></div><button class="btn btn-md col-md-12 symptoms_123_none_confirmed" onclick="get_result(0)">Submit</button></li>');
+				}
+				else
+				{
+					$('#conversation').append('<li class="assistant col-md-12"><p><b>Have you had close contact with a person with suspected COVID-19 infection in the last 14 days?</b><br><small>By "suspected" we mean a person with a confirmed COVID-19 infection, or tested for COVID-19.</small></p><div class="checkbox"><label><input type="checkbox" class="symptoms123_covid19" id="symptoms123_covid19_1" value="1">I live or have provided care toa person suspected of having COVID-19</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_covid19" id="symptoms123_covid19_2" value="2">I have shared the same closed environment (e.g., classroom, workspace, gym) or traveled in close proximity (1 m) with a person suspected of having COVID-19</label></div><div class="checkbox"><label><input type="checkbox" class="symptoms123_covid19" id="symptoms123_covid19_3" value="3">Other / None of the above</label></div><button class="btn btn-md col-md-12 symptoms_123_none_confirmed" onclick="get_result(1)">Submit</button></li>');
+				}
+			}
+
+			function get_result(num)
+			{
+				$('.symptoms123_covid19').attr('disabled', true);
+				if(num == 0)
+				{
+					if ($('#symptoms123_covid19_1').is(":checked") || $('#symptoms123_covid19_2').is(":checked"))
+					{
+						avoid_all_contact();
+					}
+					else if($('#symptoms123_covid19_3').is(":checked"))
+					{
+						stay_home();
+					}
+					else{
+						alert("Please select any option");
+					}
+				}
+				else{
+					if ($('#symptoms123_covid19_1').is(":checked") || $('#symptoms123_covid19_2').is(":checked"))
+					{
+						quarantine();
+					}
+					else if($('#symptoms123_covid19_3').is(":checked"))
+					{
+						follow_preventive_measures();
+					}
+					else{
+						alert("Please select any option");
+					}
+				}
+			}
+
+			function emergancy()
+			{
+				$('#conversation').append('<li class="assistant col-md-12" id="emergancy"><div class="alert alert-danger text-center"><strong>Call the emergancy number.<br>Avoid all contact.</strong></div></li>');
+			}
+
+			function stay_home()
+			{
+				$('#conversation').append('<li class="assistant col-md-12" id="stay_home"><div class="alert alert-warning"><strong>Stay home and monitor your symptoms</strong></div></li>');
+			}
+
+			function avoid_all_contact()
+			{
+				$('#conversation').append('<li class="assistant col-md-12" id="avoid_all_contact"><div class="alert alert-info"><strong>Avoid all contact. Consult health department.</strong></div></li>');
+			}
+
+			function consult_healthcare()
+			{
+				$('#conversation').append('<li class="assistant col-md-12" id="consult_healthcare"><div class="alert alert-warning"><strong>Consult health care provider. Avoid all contact.</strong></div></li>');
+			}
+
+			function quarantine()
+			{
+				$('#conversation').append('<li class="assistant col-md-12" id="quarantine"><div class="alert alert-danger"><strong>Quarantine.</strong></div></li>');
+			}
+
+			function follow_preventive_measures()
+			{
+				$('#conversation').append('<li class="assistant col-md-12" id="follow_preventive_measures"><div class="alert alert-success"><strong>Follow preventive measures.</strong></div></li>');
+			}
+		</script>
+	</body>
+</html>

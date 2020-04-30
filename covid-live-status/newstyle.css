@@ -1,0 +1,247 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background-color: #f7f7f7;
+	font-family: 'Roboto Slab', serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.row
+{
+	margin: 0px !important;
+}
+.hed_lin
+{
+	padding: 20px 0px;
+	background-color: #fff;
+    border-bottom: 1px solid #dcdbdb;
+}
+.hed_lin h2
+{
+	font-size: 24px;
+    font-weight: 600;
+}
+.upd_lin
+{
+	font-size: 14px;
+    margin: 25px 0px;
+    color: #999;
+}
+.sec_cases h4
+{
+	font-size: 24px;
+    margin-bottom: 20px;
+    color: #555;
+    font-weight: 500;
+}
+.sec_cases
+{
+	padding: 20px 0px;
+}
+.sec_cases p
+{
+	font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 38px;
+	letter-spacing: 2px;
+}
+.sec_cases .col-6
+{
+	padding: 0;
+}
+.conf_clr
+{
+	color: orange;
+}
+.death_clr
+{
+	color: red;
+}
+.recov_clr
+{
+	color: #8ACA2B;
+}
+.clr_rep
+{
+	    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #01adb9;
+}
+thead
+{
+	background-color: #01adb9;
+    color: #fff;
+    padding: 10px 0px;
+}
+th
+{
+	font-weight: 400 !important;
+    font-size: 14px;
+    border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+}
+table.dataTable thead th, table.dataTable thead td {
+    padding: 16px 10px;
+    border-bottom: 1px solid #ddd;
+}
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 14px 10px;
+    font-size: 14px;
+}
+#sec_tblcas
+{
+	margin-bottom: 50px;
+}
+.pad_0
+{
+	padding: 0;
+}
+.tbldeath
+{
+	background-color: red;
+    color: #fff;
+}
+.tblrecover
+{
+	background-color: orange;
+    color: #fff;
+}
+.tblconf
+{
+	background-color: #8ACA2B;
+    color: #fff;
+}
+.dataTables_filter
+{
+	margin-bottom: 25px;
+}
+.dataTables_filter input
+{
+	height: 40px;
+	outline: none;
+    padding: 11px;
+    outline-offset: unset;
+    -webkit-appearance: textfield;
+}
+.dataTables_length select
+{
+	height: 40px;
+    padding: 0px 11px;
+}
+
+
+@media(min-width:320px) and (max-width:767px){
+
+.hed_lin h2 {
+    font-size: 20px;
+}
+.upd_lin {
+    font-size: 14px;
+    margin: 15px 0px;
+    text-align: center;
+}
+.sec_cases h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.sec_cases p {
+    font-size: 25px;
+    margin-bottom: 28px;
+}
+.sec_cases {
+    padding: 15px 0px;
+    text-align: center;
+}
+.pad360
+{
+	padding: 0px;
+}
+.clr_rep {
+    margin-bottom: 25px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+}
+@media(min-width:576px) and (max-width:767px){
+
+#sec_tblcas {
+    padding: 0;
+}
+.sec_cases h4 {
+    font-size: 16px;
+}
+.sec_cases p {
+    font-size: 20px;
+}
+.sec_cases img
+{
+    width: 260px;
+}
+.clr_rep {
+    font-size: 17px;
+}
+.sec_cases {
+    text-align: left;
+}
+.img_lft
+{
+    text-align: right;
+}
+
+}
+@media(min-width:768px) and (max-width:991px){
+.sec_cases h4 {
+    font-size: 21px;
+}
+.sec_cases p {
+    font-size: 26px;
+}
+.pad_r0{
+    padding-right: 0px;
+}
+}
